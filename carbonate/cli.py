@@ -387,6 +387,12 @@ def whisper_fill():
         metavar='DST',
         help='Whisper destination file')
 
+    parser.add_argument(
+        '-l', '--lock',
+        default=False,
+        action='store_true',
+        help='Lock whisper files during filling')
+
     args = parser.parse_args()
 
     src = args.source
@@ -400,4 +406,4 @@ def whisper_fill():
 
     startFrom = time()
 
-    fill_archives(src, dst, startFrom)
+    fill_archives(src, dst, startFrom, args.lock)
